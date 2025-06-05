@@ -16,6 +16,15 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
+3. Add environment variables
+
+   Create a `.env` file in this folder with your Supabase credentials:
+
+   ```bash
+   EXPO_PUBLIC_SUPABASE_URL=<your supabase url>
+   EXPO_PUBLIC_SUPABASE_ANON_KEY=<your anon key>
+   ```
+
 In the output, you'll find options to open the app in a
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)
@@ -34,6 +43,22 @@ npm run reset-project
 ```
 
 This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+
+## Building the app
+
+Run the following commands to create release builds:
+
+### Android
+
+```bash
+npx expo run:android --variant release
+```
+
+### iOS
+
+```bash
+npx expo run:ios --configuration Release
+```
 
 ## Learn more
 
