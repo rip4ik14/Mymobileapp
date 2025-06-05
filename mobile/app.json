@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "KeyToHeart Mobile",
+    "slug": "keytoheart-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "keytoheart",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.keytoheart.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.keytoheart.app",
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
