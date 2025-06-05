@@ -44,8 +44,12 @@ export const supabaseAdmin = createServerClient<Database>(
 export async function invalidate(path: string) {
   try {
     revalidatePath(path);
-    process.env.NODE_ENV !== "production" && console.log(`Cache invalidated for path: ${path}`);
+    if (process.env.NODE_ENV !== "production") {
+      console.log(`Cache invalidated for path: ${path}`);
+    }
   } catch (error) {
-    process.env.NODE_ENV !== "production" && console.error(`Error invalidating cache for path ${path}:`, error);
+    if (process.env.NODE_ENV !== "production") {
+      console.error(`Error invalidating cache for path ${path}:`, error);
+    }
   }
 }

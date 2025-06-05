@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import WebpImage from './WebpImage';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
