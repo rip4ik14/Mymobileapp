@@ -44,3 +44,22 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 ```
 
 Without this value the `/api/upsell/products` endpoint will return an error.
+
+## Mobile App
+
+The `mobile` directory contains an Expo React Native app. To start the mobile app:
+
+```bash
+cd mobile
+npm install
+npx expo start
+```
+
+The app requires the following environment variables to access Supabase:
+
+```bash
+EXPO_PUBLIC_SUPABASE_URL=<your supabase url>
+EXPO_PUBLIC_SUPABASE_ANON_KEY=<your anon key>
+```
+
+Add them to an `.env` file inside the `mobile` folder.
