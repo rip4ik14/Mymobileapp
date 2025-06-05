@@ -1,10 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native';
+import AnimatedSection from '@/components/AnimatedSection';
 
 export default function CatalogScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Catalog Screen</Text>
-    </View>
+    <AnimatedSection animation="fadeIn">
+      <View style={styles.container}>
+        <Text style={styles.text}>Catalog Screen</Text>
+      </View>
+    </AnimatedSection>
   );
 }
 
