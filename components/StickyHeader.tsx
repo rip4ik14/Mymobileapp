@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import BurgerMenu from '@components/BurgerMenu';
 import CategoryNav from '@components/CategoryNav';
 import SearchModal from '@components/SearchModal';
@@ -20,7 +20,6 @@ type StickyHeaderProps = {
 };
 
 export default function StickyHeader({ initialCategories }: StickyHeaderProps) {
-  const pathname = usePathname() || '/';
   const router = useRouter();
   const { items } = useCart() as { items: { price: number; quantity: number; imageUrl: string }[] };
   const {
@@ -76,7 +75,9 @@ export default function StickyHeader({ initialCategories }: StickyHeaderProps) {
                   setBonus(null);
                 }
               } catch (error) {
-                process.env.NODE_ENV !== "production" && console.error(`${new Date().toISOString()} StickyHeader: Error loading bonuses`, error);
+                if (process.env.NODE_ENV !== "production") {
+                  console.error(`${new Date().toISOString()} StickyHeader: Error loading bonuses`, error);
+                }
                 setBonus(null);
               }
             } else {
@@ -101,7 +102,9 @@ export default function StickyHeader({ initialCategories }: StickyHeaderProps) {
                     setBonus(null);
                   }
                 } catch (error) {
-                  process.env.NODE_ENV !== "production" && console.error(`${new Date().toISOString()} StickyHeader: Error loading bonuses (Supabase)`, error);
+                  if (process.env.NODE_ENV !== "production") {
+                    console.error(`${new Date().toISOString()} StickyHeader: Error loading bonuses (Supabase)`, error);
+                  }
                   setBonus(null);
                 }
               } else {
@@ -115,7 +118,9 @@ export default function StickyHeader({ initialCategories }: StickyHeaderProps) {
           }
         }
       } catch (error) {
-        process.env.NODE_ENV !== "production" && console.error(`${new Date().toISOString()} StickyHeader: Error checking session`, error);
+        if (process.env.NODE_ENV !== "production") {
+          console.error(`${new Date().toISOString()} StickyHeader: Error checking session`, error);
+        }
         if (isMounted) {
           setIsAuthenticated(false);
           setBonus(null);
@@ -144,7 +149,9 @@ export default function StickyHeader({ initialCategories }: StickyHeaderProps) {
                 }
               })
               .catch((error) => {
-                process.env.NODE_ENV !== "production" && console.error(`${new Date().toISOString()} StickyHeader: Error loading bonuses after auth change`, error);
+                if (process.env.NODE_ENV !== "production") {
+                  console.error(`${new Date().toISOString()} StickyHeader: Error loading bonuses after auth change`, error);
+                }
                 if (isMounted) setBonus(null);
               });
           } else {
@@ -249,7 +256,9 @@ export default function StickyHeader({ initialCategories }: StickyHeaderProps) {
         throw new Error('Failed to logout');
       }
     } catch (error) {
-      process.env.NODE_ENV !== "production" && console.error(`${new Date().toISOString()} StickyHeader: Error signing out`, error);
+      if (process.env.NODE_ENV !== "production") {
+        console.error(`${new Date().toISOString()} StickyHeader: Error signing out`, error);
+      }
       toast.error('Не удалось выйти из аккаунта');
     }
   };

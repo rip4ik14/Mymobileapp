@@ -36,13 +36,17 @@ export default async function PromoGrid() {
     const result = await fetchPromoBlocksWithTimeout(2000) as { data: PromoBlock[] | null; error: PostgrestError | null };
     data = result.data;
     error = result.error;
-  } catch (err: any) {
-    process.env.NODE_ENV !== "production" && console.error('Error fetching promo blocks:', err.message);
-    error = err;
+  } catch (err: unknown) {
+    if (process.env.NODE_ENV !== "production") {
+      console.error('Error fetching promo blocks:', (err as Error).message);
+    }
+    error = err as PostgrestError;
   }
 
   if (error || !data) {
-    process.env.NODE_ENV !== "production" && console.error('PromoGrid failed to load data:', error?.message || 'No data');
+    if (process.env.NODE_ENV !== "production") {
+      console.error('PromoGrid failed to load data:', error?.message || 'No data');
+    }
     return null;
   }
 

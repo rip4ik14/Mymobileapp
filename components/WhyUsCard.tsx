@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import WebpImage from './WebpImage';
 
 export default function WhyUsCard({
