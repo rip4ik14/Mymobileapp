@@ -6,6 +6,10 @@ import { Image } from 'expo-image';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { supabase } from '@/lib/supabase';
+=======
+import { View, Text, StyleSheet } from 'react-native';
+import AnimatedSection from '@/components/AnimatedSection';
+
 
 export default function CatalogScreen() {
   const [loading, setLoading] = useState(true);
@@ -46,6 +50,7 @@ export default function CatalogScreen() {
   }
 
   return (
+
     <FlatList
       data={products}
       keyExtractor={(item) => item.id.toString()}
@@ -59,6 +64,12 @@ export default function CatalogScreen() {
         </Animated.View>
       )}
     />
+    <AnimatedSection animation="fadeIn">
+      <View style={styles.container}>
+        <Text style={styles.text}>Catalog Screen</Text>
+      </View>
+    </AnimatedSection>
+
   );
 }
 
