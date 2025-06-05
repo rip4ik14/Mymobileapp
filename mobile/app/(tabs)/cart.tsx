@@ -1,6 +1,11 @@
+
 import { Text, StyleSheet, FlatList, TouchableOpacity, LayoutAnimation } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { useAuthCart } from '@/components/AuthCartProvider';
+=======
+import { View, Text, StyleSheet } from 'react-native';
+import AnimatedSection from '@/components/AnimatedSection';
+
 
 export default function CartScreen() {
   const { cart, removeFromCart } = useAuthCart();
@@ -11,6 +16,7 @@ export default function CartScreen() {
   };
 
   return (
+
     <Animated.View style={styles.container} entering={FadeIn} exiting={FadeOut}>
       {cart.length === 0 ? (
         <Text style={styles.text}>Your cart is empty</Text>
@@ -33,6 +39,12 @@ export default function CartScreen() {
         />
       )}
     </Animated.View>
+
+    <AnimatedSection animation="fadeIn">
+      <View style={styles.container}>
+        <Text style={styles.text}>Cart Screen</Text>
+      </View>
+    </AnimatedSection>
   );
 }
 
