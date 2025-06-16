@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, View, Text, StyleSheet } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { Image } from 'expo-image';
 
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { supabase } from '@/lib/supabase';
-=======
-import { View, Text, StyleSheet } from 'react-native';
 import AnimatedSection from '@/components/AnimatedSection';
 
 
@@ -50,26 +48,26 @@ export default function CatalogScreen() {
   }
 
   return (
-
-    <FlatList
-      data={products}
-      keyExtractor={(item) => item.id.toString()}
-      contentContainerStyle={styles.list}
-      renderItem={({ item }) => (
-        <Animated.View entering={FadeIn.duration(300)} style={styles.item}>
-          {item.image ? (
-            <Image source={{ uri: item.image }} style={styles.image} />
+    <>
+      <FlatList
+        data={products}
+        keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={styles.list}
+        renderItem={({ item }) => (
+          <Animated.View entering={FadeIn.duration(300)} style={styles.item}>
+            {item.image ? (
+              <Image source={{ uri: item.image }} style={styles.image} />
           ) : null}
           <ThemedText style={styles.title}>{item.title}</ThemedText>
         </Animated.View>
       )}
-    />
-    <AnimatedSection animation="fadeIn">
-      <View style={styles.container}>
-        <Text style={styles.text}>Catalog Screen</Text>
-      </View>
-    </AnimatedSection>
-
+      />
+      <AnimatedSection animation="fadeIn">
+        <View style={styles.container}>
+          <Text style={styles.text}>Catalog Screen</Text>
+        </View>
+      </AnimatedSection>
+    </>
   );
 }
 
