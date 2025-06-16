@@ -2,6 +2,8 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+The mobile app now mirrors the main pages of the Next.js site. It includes catalog and product screens powered by Supabase and simple cart and account flows.
+
 ## Get started
 
 1. Install dependencies
@@ -24,6 +26,8 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    EXPO_PUBLIC_SUPABASE_URL=<your supabase url>
    EXPO_PUBLIC_SUPABASE_ANON_KEY=<your anon key>
    ```
+
+4. Open the Expo app and use the Catalog tab to load products from your Supabase database. Use the Cart and Account tabs to test adding items or signing in.
 
 In the output, you'll find options to open the app in a
 
